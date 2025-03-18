@@ -1,14 +1,23 @@
 import React from "react";
-import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import ReportIssue from "./pages/ReportIssue";
+import TrackIssues from "./pages/TrackIssues";
+import About from "./pages/About";
 
 function App() {
-    return (
-        <div>
-            <Navbar />
-            <Home />
-        </div>
-    );
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/report" element={<ReportIssue />} />
+        <Route path="/track" element={<TrackIssues />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
