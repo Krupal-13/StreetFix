@@ -27,11 +27,6 @@
   color: yellow;
 }
 
-.text-highlight {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-
 .hero-section p {
   font-size: 1.2rem;
   opacity: 0.9;
@@ -62,6 +57,47 @@
 .feature-icon {
   font-size: 3rem;
   color: yellow;
+  margin-bottom: 10px;
+}
+
+/* How It Works */
+.how-it-works {
+  margin-top: 20px;
+  padding: 50px 0;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.step {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.step:hover {
+  transform: scale(1.05);
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  color: #333;
   margin-bottom: 10px;
 }
 
