@@ -1,99 +1,72 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./ReportIssue.css";
+import React, { useState } from 'react';
+import './ReportIssue.css';
 
-function ReportIssue() {
-  const [issueTitle, setIssueTitle] = useState("");
-  const [issueType, setIssueType] = useState("Pothole");
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [images, setImages] = useState(null);
+const ReportIssue = () => {
+    const [showTips, setShowTips] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here (e.g., send data to backend)
-    console.log({
-      issueTitle,
-      issueType,
-      description,
-      location,
-      images
-    });
-    alert("Issue reported successfully!");
-  };
+    const toggleTips = () => {
+        setShowTips(!showTips);
+    };
 
-  return (
-    <div className="report-issue-container">
-      <div className="form-container">
-        <h2>Report an Issue</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Issue Title</label>
-            <input
-              type="text"
-              className="form-control"
-              value={issueTitle}
-              onChange={(e) => setIssueTitle(e.target.value)}
-              placeholder="Enter the issue title"
-              required
-            />
-          </div>
+    return (
+        <div className="report-issue-container">
+            {/* Trending Reviews Section */}
+            <div className="trending-reviews">
+                <h3>Trending Reviews</h3>
+                <p><strong>John Doe:</strong> Reported a pothole and it got fixed within a week!</p>
+                <p><strong>Jane Smith:</strong> The streetlight issue was resolved promptly.</p>
+                <p><strong>Mike Johnson:</strong> Garbage collection request was handled well.</p>
+            </div>
 
-          <div className="form-group">
-            <label>Issue Type</label>
-            <select
-              className="form-control"
-              value={issueType}
-              onChange={(e) => setIssueType(e.target.value)}
-            >
-              <option>Pothole</option>
-              <option>Streetlight Issue</option>
-              <option>Garbage Collection</option>
-              <option>Others</option>
-            </select>
-          </div>
+            {/* Report Form Section */}
+            <div className="report-form">
+                <h2>Report an Issue</h2>
+                <form>
+                    <label>Issue Title</label>
+                    <input type="text" placeholder="Enter the issue title" />
 
-          <div className="form-group">
-            <label>Description</label>
-            <textarea
-              className="form-control"
-              rows="4"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Describe the issue in detail"
-              required
-            ></textarea>
-          </div>
+                    <label>Issue Type</label>
+                    <select>
+                        <option>Select an issue type</option>
+                        <option>Pothole</option>
+                        <option>Streetlight</option>
+                        <option>Garbage Collection</option>
+                        <option>Water Leakage</option>
+                        <option>Other</option>
+                    </select>
 
-          <div className="form-group">
-            <label>Location</label>
-            <input
-              type="text"
-              className="form-control"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              placeholder="Enter the location of the issue"
-              required
-            />
-          </div>
+                    <label>Description</label>
+                    <textarea placeholder="Describe the issue in detail" rows="4"></textarea>
 
-          <div className="form-group">
-            <label>Upload Images</label>
-            <input
-              type="file"
-              className="form-control"
-              onChange={(e) => setImages(e.target.files)}
-              multiple
-            />
-          </div>
+                    <label>Location</label>
+                    <div className="location-inputs">
+                        <input type="text" placeholder="Enter locality" />
+                        <input type="text" placeholder="Enter pincode" />
+                    </div>
 
-          <button type="submit" className="btn btn-warning mt-3">
-            Submit Report
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
+                    <label>Upload Images</label>
+                    <input type="file" accept="image/*" multiple />
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            {/* Helpful Tips Section */}
+            <div className="helpful-tips">
+                <div className="tips-title" onClick={toggleTips}>
+                    Helpful Tips or Instructions {showTips ? '▼' : '▲'}
+                </div>
+                {showTips && (
+                    <div className="tips-content">
+                        <h4>How to describe your issue effectively</h4>
+                        <p>Provide clear and concise details about the issue, including relevant descriptions such as location, size, and impact.</p>
+                        <h4>Why providing an accurate location is important</h4>
+                        <p>Ensure you provide accurate locality names and pincodes for faster resolution.</p>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
 
 export default ReportIssue;
