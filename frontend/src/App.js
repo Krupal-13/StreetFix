@@ -5,8 +5,10 @@ import Home from "./pages/Home";
 import ReportIssue from "./pages/ReportIssue";
 import TrackIssues from "./pages/TrackIssues";
 import About from "./pages/About";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/Login"; // Add Login import
+import Signup from "./pages/Signup"; // Add Signup import
+// Remove bootstrap import if no longer needed anywhere
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -17,8 +19,8 @@ function App() {
         <Route path="/report" element={<ReportIssue />} />
         <Route path="/track" element={<TrackIssues />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} /> {/* Add Login route */}
+        <Route path="/signup" element={<Signup />} /> {/* Add Signup route */}
       </Routes>
     </Router>
   );

@@ -1,54 +1,154 @@
+/* General Auth Page Styles */
+.auth-page {
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  padding: 100px 2rem 4rem; /* Adjust top padding for fixed navbar */
+  background-color: #f4f7f6; /* Consistent light background */
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.auth-container {
+  max-width: 450px; /* Optimal width for auth forms */
+  width: 100%;
+  background-color: #fff;
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  text-align: center; /* Center titles and links */
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.auth-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Form Group Styling */
+.auth-form-group {
+  margin-bottom: 1.5rem;
+  text-align: left; /* Align labels and inputs left */
+}
+
+.auth-form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.auth-form-group input[type="text"],
+.auth-form-group input[type="email"],
+.auth-form-group input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.auth-form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+/* Error and Success Messages */
+.auth-error-message,
+.auth-success-message {
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.auth-error-message {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.auth-success-message {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+/* Submit Button */
+.auth-submit-button {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.auth-submit-button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.auth-submit-button:disabled {
+  background-color: #a0cfff;
+  cursor: not-allowed;
+}
+
+/* Switch Link (Login <-> Signup) */
+.auth-switch-link {
+  margin-top: 1.8rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.auth-switch-link a {
+  color: #007bff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.auth-switch-link a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 576px) {
+  .auth-page {
+    padding: 60px 1rem 2rem; /* Adjust padding for smaller screens */
+  }
+  .auth-container {
+    padding: 2rem 1.5rem;
+  }
+  .auth-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Ensure Inter font is loaded */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
-
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-}
-
-.form-box {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    width: 400px;
-}
-
-.form-box h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-box form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.form-box form input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-box form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.form-box form button:hover {
-    background-color: #0056b3;
+  font-family: 'Inter', sans-serif;
 }

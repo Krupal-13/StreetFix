@@ -1,72 +1,174 @@
 import React, { useState } from 'react';
-import './ReportIssue.css';
+import axios from 'axios';
+import './ReportIssue.css'; // Ensure this CSS file is updated
 
-const ReportIssue = () => {
-    const [showTips, setShowTips] = useState(false);
+function ReportIssue() {
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    category: 'pothole',
+    location: '',
+    image: null,
+  });
+  const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
+  const [errors, setErrors] = useState({});
 
-    const toggleTips = () => {
-        setShowTips(!showTips);
-    };
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.title.trim()) newErrors.title = 'Title is required.';
+    if (!formData.description.trim()) newErrors.description = 'Description is required.';
+    if (!formData.location.trim()) newErrors.location = 'Location is required.';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-    return (
-        <div className="report-issue-container">
-            {/* Trending Reviews Section */}
-            <div className="trending-reviews">
-                <h3>Trending Reviews</h3>
-                <p><strong>John Doe:</strong> Reported a pothole and it got fixed within a week!</p>
-                <p><strong>Jane Smith:</strong> The streetlight issue was resolved promptly.</p>
-                <p><strong>Mike Johnson:</strong> Garbage collection request was handled well.</p>
-            </div>
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!validateForm()) return;
 
-            {/* Report Form Section */}
-            <div className="report-form">
-                <h2>Report an Issue</h2>
-                <form>
-                    <label>Issue Title</label>
-                    <input type="text" placeholder="Enter the issue title" />
+    setSubmitStatus('submitting'); // Indicate submission start
+    const formPayload = new FormData();
+    Object.keys(formData).forEach(key => {
+      formPayload.append(key, formData[key]);
+    });
 
-                    <label>Issue Type</label>
-                    <select>
-                        <option>Select an issue type</option>
-                        <option>Pothole</option>
-                        <option>Streetlight</option>
-                        <option>Garbage Collection</option>
-                        <option>Water Leakage</option>
-                        <option>Other</option>
-                    </select>
+    try {
+      // Replace with your actual API endpoint
+      const response = await axios.post('/api/report', formPayload, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
 
-                    <label>Description</label>
-                    <textarea placeholder="Describe the issue in detail" rows="4"></textarea>
+      if (response.status === 201) {
+        setSubmitStatus('success');
+        setFormData({ title: '', description: '', category: 'pothole', location: '', image: null });
+        setErrors({});
+        // Optionally clear the file input visually if needed
+      } else {
+        throw new Error('Submission failed with status: ' + response.status);
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitStatus('error');
+      // Optionally set a general error message for the user
+      setErrors(prev => ({ ...prev, general: 'Failed to submit report. Please try again.' }));
+    }
+  };
 
-                    <label>Location</label>
-                    <div className="location-inputs">
-                        <input type="text" placeholder="Enter locality" />
-                        <input type="text" placeholder="Enter pincode" />
-                    </div>
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: null })); // Clear error on change
+    }
+  };
 
-                    <label>Upload Images</label>
-                    <input type="file" accept="image/*" multiple />
+  const handleFileChange = (e) => {
+    setFormData(prev => ({ ...prev, image: e.target.files[0] }));
+    if (errors.image) {
+      setErrors(prev => ({ ...prev, image: null }));
+    }
+  };
 
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+  return (
+    <div className="report-issue-page">
+      <div className="form-container">
+        <h1 className="form-title">Report a New Issue</h1>
+        <p className="form-subtitle">Help improve your community by reporting problems.</p>
 
-            {/* Helpful Tips Section */}
-            <div className="helpful-tips">
-                <div className="tips-title" onClick={toggleTips}>
-                    Helpful Tips or Instructions {showTips ? '▼' : '▲'}
-                </div>
-                {showTips && (
-                    <div className="tips-content">
-                        <h4>How to describe your issue effectively</h4>
-                        <p>Provide clear and concise details about the issue, including relevant descriptions such as location, size, and impact.</p>
-                        <h4>Why providing an accurate location is important</h4>
-                        <p>Ensure you provide accurate locality names and pincodes for faster resolution.</p>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-};
+        {submitStatus === 'success' && (
+          <div className="alert alert-success">Report submitted successfully! Thank you.</div>
+        )}
+        {submitStatus === 'error' && errors.general && (
+          <div className="alert alert-error">{errors.general}</div>
+        )}
+
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="form-group">
+            <label htmlFor="title">Issue Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleInputChange}
+              placeholder="e.g., Large pothole on Main St"
+              className={errors.title ? 'input-error' : ''}
+              required
+            />
+            {errors.title && <span className="error-message">{errors.title}</span>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="description">Detailed Description</label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+              placeholder="Provide details like size, severity, and exact location..."
+              rows="4"
+              className={errors.description ? 'input-error' : ''}
+              required
+            ></textarea>
+            {errors.description && <span className="error-message">{errors.description}</span>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <select
+              id="category"
+              name="category"
+              value={formData.category}
+              onChange={handleInputChange}
+            >
+              <option value="pothole">Pothole</option>
+              <option value="streetlight">Broken Streetlight</option>
+              <option value="garbage">Garbage/Waste Issue</option>
+              <option value="graffiti">Graffiti</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="location">Location</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleInputChange}
+              placeholder="Address, intersection, or landmark"
+              className={errors.location ? 'input-error' : ''}
+              required
+            />
+            {errors.location && <span className="error-message">{errors.location}</span>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="image">Upload Photo (Optional)</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="file-input"
+            />
+            {/* Basic file name display */}
+            {formData.image && <span className="file-name-display">Selected: {formData.image.name}</span>}
+          </div>
+
+          <button
+            type="submit"
+            className="submit-button"
+            disabled={submitStatus === 'submitting'}
+          >
+            {submitStatus === 'submitting' ? 'Submitting...' : 'Submit Report'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
 
 export default ReportIssue;

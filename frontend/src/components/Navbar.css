@@ -1,13 +1,95 @@
 .navbar {
-  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  padding: 1rem 0;
+  position: fixed; /* Stick to top */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  transition: background 0.3s ease;
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem; /* Add padding for spacing */
 }
 
-.navbar-nav .nav-link {
-  font-size: 1.1rem;
-  margin-left: 15px;
+.navbar-logo {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 1.5rem;
+}
+
+.nav-link {
+  color: #555;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active { /* Add an active class later if needed */
+  color: #007bff; /* Primary color */
+  color: #007bff; /* Primary color */
+  background-color: rgba(0, 123, 255, 0.08); /* Light primary background */
+}
+
+/* Auth Link Styling */
+.nav-item-auth {
+  margin-left: 0.8rem; /* Slightly less margin for auth buttons */
+}
+
+.nav-link-login {
+  /* Keep standard link style */
+}
+
+.nav-link-signup {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem; /* Adjust padding for button look */
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link-signup:hover {
+  background-color: #0056b3;
+  color: white; /* Ensure text remains white on hover */
+  transform: translateY(-1px);
+}
+
+/* Basic responsiveness for smaller screens */
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1rem;
+  }
+  .nav-menu {
+    /* Basic mobile menu handling - more complex logic might be needed */
+    display: none; /* Hide menu by default on small screens */
+    /* Add logic to toggle visibility */
+  }
+  /* Add a burger menu icon/button here */
 }
