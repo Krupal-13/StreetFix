@@ -2,11 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'; // Ensure this CSS file is updated
 
+import heroBg from './images/A_flat-style_digital_illustration_in_the_backgroun.png'; // Import the image
+
 function Home() {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="hero-section">
+      <section
+        className="hero-section"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: '100% 140%',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="hero-content">
           <h1 className="hero-title">
             Improve Your City, One Report at a Time
@@ -17,7 +27,6 @@ function Home() {
           <Link to="/report" className="hero-cta-button">Report an Issue Now</Link>
         </div>
         <div className="hero-visual">
-          {/* Placeholder for a modern graphic or illustration */}
           <div className="visual-placeholder"></div>
         </div>
       </section>
