@@ -1,19 +1,21 @@
 const { MongoClient } = require("mongodb")
 require("dotenv").config({path: "./config.env"})
 
-async function main() {
-    const Db = process.env.ATLAS_URI
-    const client = new MongoClient(Db)
+const client = new MongoClient(process.env.ATLAS_URI);
+let db;
 
+async function connectDB() {
     try {
         await client.connect()
-        const collections = await client.db("StreetFix").collections()
-        collections.forEach((collection) => console.log(collection.s.namespace.collection))
+        db = client.db("StreetFix")
+        console.log("DB connection success")
     } catch (error) {
-        console.error(error)
-    } finally {
-        await client.close()
+        console.log("DB connection not success")
     }
 }
 
-main()
+function getDb(){
+    return db;
+}
+
+module.exports = { connectDB , getDb }
