@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Link back to login
 import './LoginSignup.css'; // Shared CSS
+import { signupUser } from '../api'; 
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -18,13 +19,12 @@ function Signup() {
     setError(''); // Clear error on input change
     setSuccess('');
   };
-
-  const handleSubmit = (event) => {
+  
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
     setSuccess('');
-
-    // Basic validation
+  
     if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       setError('Please fill in all fields.');
       return;
@@ -33,26 +33,30 @@ function Signup() {
       setError('Passwords do not match.');
       return;
     }
-    if (formData.password.length < 6) { // Example minimum length
-        setError('Password must be at least 6 characters long.');
-        return;
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      return;
     }
-
-    // --- TODO: Implement actual signup logic here ---
-    console.log('Attempting signup with:', formData);
-    // Replace with actual API call using axios or fetch
-    // try {
-    //   const response = await axios.post('/api/signup', { name: formData.name, email: formData.email, password: formData.password });
-    //   // Handle successful signup (e.g., show message, redirect to login)
-    //   console.log('Signup successful:', response.data);
-    //   setSuccess('Account created successfully! Please log in.');
-    //   setFormData({ name: '', email: '', password: '', confirmPassword: '' }); // Clear form
-    // } catch (err) {
-    //   console.error('Signup error:', err);
-    //   setError(err.response?.data?.message || 'Signup failed. Please try again.');
-    // }
-    setError('Signup functionality not yet implemented.'); // Placeholder
+  
+    try {
+      const response = await signupUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
+  
+      if (response.msg === "User registered successfully") {
+        setSuccess('Account created successfully! Please log in.');
+        setFormData({ name: '', email: '', password: '', confirmPassword: '' });
+      } else {
+        setError(response.msg || 'Signup failed. Please try again.');
+      }
+    } catch (err) {
+      console.error('Signup error:', err);
+      setError('Something went wrong. Please try again later.');
+    }
   };
+  
 
   return (
     <div className="auth-page">
