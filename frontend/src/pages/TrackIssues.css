@@ -117,14 +117,8 @@
   background-color: #e9ecef; /* Slightly darker grey on hover */
 }
 
-<<<<<<< HEAD
 .status-resolved {
-  background-color: #28a745; /* Brighter green */
-  color: white;
-=======
-/* .status-resolved {
   background-color: #28a745;
->>>>>>> 4753bbf4aa2853db86e7104f101edc7f4de3040e
 }
 
 .status-in-progress {
@@ -137,14 +131,10 @@
   color: white;
 }
 
-<<<<<<< HEAD
-/* Keep image view styles as they are specific popups */
-=======
 .status-verified {
   background-color: #212529;
 } */
 
->>>>>>> 4753bbf4aa2853db86e7104f101edc7f4de3040e
 .image-view-overlay {
   position: fixed;
   top: 0;
