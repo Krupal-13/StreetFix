@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { reportIssue } from '../api';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import './ReportIssue.css'; // Ensure this CSS file is updated
 
 function ReportIssue() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     category: 'pothole',
     location: '',
   });
+  const [imageFile, setImageFile] = useState(null);
   const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
   const [errors, setErrors] = useState({});
 
@@ -28,14 +40,29 @@ function ReportIssue() {
     setSubmitStatus('submitting'); // Indicate submission start
 
     try {
-      const response = await reportIssue(formData);
+      const formPayload = new FormData();
+      formPayload.append('title', formData.title);
+      formPayload.append('description', formData.description);
+      formPayload.append('category', formData.category);
+      formPayload.append('location', formData.location);
+      if (imageFile) {
+        formPayload.append('image', imageFile);
+      }
 
-      if (response.msg === 'Issue reported successfully') {
+      const response = await fetch('http://localhost:5000/api/issues', {
+        method: 'POST',
+        body: formPayload,
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.msg === 'Issue reported successfully') {
         setSubmitStatus('success');
         setFormData({ title: '', description: '', category: 'pothole', location: '' });
+        setImageFile(null);
         setErrors({});
       } else {
-        throw new Error('Submission failed: ' + (response.msg || 'Unknown error'));
+        throw new Error(data.msg || 'Unknown error');
       }
     } catch (error) {
       console.error('Submission error:', error);
@@ -49,6 +76,13 @@ function ReportIssue() {
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: null })); // Clear error on change
+    }
+  };
+
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]);
+    if (errors.image) {
+      setErrors(prev => ({ ...prev, image: null }));
     }
   };
 
@@ -127,6 +161,19 @@ function ReportIssue() {
             {errors.location && <span className="error-message">{errors.location}</span>}
           </div>
 
+          <div className="form-group">
+            <label htmlFor="image">Upload Photo (Optional)</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              onChange={handleFileChange}
+              className={errors.image ? 'input-error' : ''}
+            />
+            {imageFile && <span className="file-name-display">Selected: {imageFile.name}</span>}
+          </div>
+
           <button
             type="submit"
             className="submit-button"
@@ -140,5 +187,5 @@ function ReportIssue() {
   );
 }
 
-export default ReportIssue;
 
+export default ReportIssue;

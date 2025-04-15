@@ -1,0 +1,61 @@
+.admin-dashboard {
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  background-color: #f4f7f6;
+  min-height: 100vh;
+}
+
+.admin-dashboard h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.filters input,
+.filters select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+.issues-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.issues-table th,
+.issues-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.issues-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.error {
+  color: red;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}

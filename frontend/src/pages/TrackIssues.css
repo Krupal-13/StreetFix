@@ -1,137 +1,117 @@
-/* General Page Styles */
 .track-issues-page {
+  padding: 2rem;
   font-family: 'Inter', sans-serif;
   color: #333;
-  padding: 100px 2rem 4rem; /* Adjust top padding for fixed navbar */
-  background-color: #f9fafb; /* Slightly different light background */
+  background-color: #f4f7f6;
   min-height: 100vh;
 }
 
 .page-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2.5rem;
-  color: #222;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Loading and Error States */
 .loading-indicator,
 .error-message-box,
 .no-issues-message {
-  text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
   color: #666;
-  padding: 2rem;
-  margin-top: 2rem;
 }
 
-.error-message-box {
-  color: #dc3545; /* Red for errors */
-  background-color: #f8d7da;
-  border: 1px solid #f5c2c7;
-  border-radius: 8px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Issues Table Styling */
 .issues-list-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  overflow: hidden; /* Ensures border-radius applies to table */
+  overflow-x: auto;
 }
 
 .issues-table {
   width: 100%;
-  border-collapse: collapse; /* Remove spacing between cells */
+  border-collapse: collapse;
 }
 
 .issues-table th,
 .issues-table td {
-  padding: 1rem 1.2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
   text-align: left;
-  border-bottom: 1px solid #e9ecef; /* Light border between rows */
+  vertical-align: middle;
 }
 
-.issues-table th {
-  background-color: #f8f9fa; /* Light header background */
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #555;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.issue-thumbnail {
+  border-radius: 4px;
+  transition: transform 0.2s ease;
 }
 
-.issues-table tbody tr:last-child td {
-  border-bottom: none; /* Remove border for the last row */
+.issue-thumbnail:hover {
+  transform: scale(1.1);
 }
 
-.issues-table tbody tr:hover {
-  background-color: #f1f3f5; /* Subtle hover effect */
-}
-
-.issue-row td {
-  font-size: 0.95rem;
-  color: #444;
-}
-
-.issue-row td:first-child { /* Style the ID column */
-  font-weight: 500;
-  color: #888;
-}
-
-/* Status Badge Styling */
 .status-badge {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 600;
-  border-radius: 15px; /* Pill shape */
-  text-transform: capitalize;
+  color: #333;
+  display: inline-block;
 }
 
 .status-resolved {
-  background-color: #d1e7dd; /* Light green */
-  color: #0f5132; /* Dark green */
+  background-color: #28a745;
 }
 
 .status-in-progress {
-  background-color: #fff3cd; /* Light yellow */
-  color: #664d03; /* Dark yellow */
+  background-color: #ffc107;
+  color: #212529;
 }
 
 .status-pending {
-  background-color: #f8d7da; /* Light red */
-  color: #842029; /* Dark red */
+  background-color: #6c757d;
 }
 
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-  .track-issues-page {
-    padding: 80px 1rem 2rem;
-  }
-  .page-title {
-    font-size: 2rem;
-  }
-  /* Consider making the table scrollable horizontally on small screens */
-  .issues-list-container {
-    overflow-x: auto;
-  }
-  .issues-table th,
-  .issues-table td {
-    padding: 0.8rem;
-    white-space: nowrap; /* Prevent text wrapping */
-  }
+.image-view-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Ensure Inter font is loaded */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+.image-view-content {
+  position: relative;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-body {
-  font-family: 'Inter', sans-serif;
+.image-view-large {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.image-view-close-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.image-view-close-button:hover {
+  background-color: #b02a37;
 }

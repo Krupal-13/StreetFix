@@ -6,6 +6,9 @@ function TrackIssues() {
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [modalImage, setModalImage] = useState(null);
+  const [showImageView, setShowImageView] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const loadIssues = async () => {
@@ -34,6 +37,16 @@ function TrackIssues() {
     }
   };
 
+  const openImageView = (imageUrl) => {
+    setSelectedImage(imageUrl);
+    setShowImageView(true);
+  };
+
+  const closeImageView = () => {
+    setSelectedImage(null);
+    setShowImageView(false);
+  };
+
   return (
     <div className="track-issues-page">
       <h1 className="page-title">Track Your Reported Issues</h1>
@@ -55,6 +68,7 @@ function TrackIssues() {
                 <th>Category</th>
                 <th>Submitted</th>
                 <th>Status</th>
+                <th>Image</th>
               </tr>
             </thead>
             <tbody>
@@ -69,10 +83,32 @@ function TrackIssues() {
                       {issue.status || 'Pending'}
                     </span>
                   </td>
+                  <td>
+                    {issue.imageUrl ? (
+                      <img
+                        src={`http://localhost:5000${issue.imageUrl}`}
+                        alt="Issue"
+                        className="issue-thumbnail"
+                        onClick={() => openImageView(`http://localhost:5000${issue.imageUrl}`)}
+                        style={{ cursor: 'pointer', maxWidth: '50px', maxHeight: '50px' }}
+                      />
+                    ) : (
+                      <span>No Image</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {showImageView && (
+        <div className="image-view-overlay" onClick={closeImageView}>
+          <div className="image-view-content" onClick={e => e.stopPropagation()}>
+            <img src={selectedImage} alt="Issue Large" className="image-view-large" />
+            <button className="image-view-close-button" onClick={closeImageView}>Close</button>
+          </div>
         </div>
       )}
     </div>

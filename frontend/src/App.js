@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Login from "./pages/Login"; // Add Login import
 import Signup from "./pages/Signup"; // Add Signup import
 import { AuthProvider } from "./context/AuthContext";
+import AdminDashboard from "./pages/AdminDashboard";
 // Remove bootstrap import if no longer needed anywhere
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} /> {/* Add Login route */}
           <Route path="/signup" element={<Signup />} /> {/* Add Signup route */}
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </Router>
     </AuthProvider>
