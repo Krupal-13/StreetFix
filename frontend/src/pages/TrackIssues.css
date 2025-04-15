@@ -54,7 +54,7 @@
   display: inline-block;
 }
 
-.status-resolved {
+/* .status-resolved {
   background-color: #28a745;
 }
 
@@ -66,6 +66,10 @@
 .status-pending {
   background-color: #6c757d;
 }
+
+.status-verified {
+  background-color: #212529;
+} */
 
 .image-view-overlay {
   position: fixed;

@@ -34,6 +34,14 @@ router.post("/", upload.single('image'), async (req, res) => {
     issueData.imageUrl = `/uploads/${req.file.filename}`;
   }
 
+  // Add user info from request (assumes user info is sent in req.body.userId or req.body.userEmail)
+  if (req.body.userId) {
+    issueData.userId = req.body.userId;
+  }
+  if (req.body.userEmail) {
+    issueData.userEmail = req.body.userEmail;
+  }
+
   try {
     const result = await db.collection("issues").insertOne(issueData);
     res.status(201).json({ msg: "Issue reported successfully", issueId: result.insertedId });
@@ -53,6 +61,20 @@ router.get("/", async (req, res) => {
   } catch (err) {
     console.error("Error fetching issues:", err);
     res.status(500).json({ msg: "Error fetching issues", error: err.message });
+  }
+});
+
+// GET /api/issues/user/:userId - Get issues for a specific user
+router.get("/user/:userId", async (req, res) => {
+  const db = getDB();
+  const { userId } = req.params;
+
+  try {
+    const issues = await db.collection("issues").find({ userId }).toArray();
+    res.status(200).json(issues);
+  } catch (err) {
+    console.error("Error fetching user issues:", err);
+    res.status(500).json({ msg: "Error fetching user issues", error: err.message });
   }
 });
 
