@@ -83,4 +83,28 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// DELETE /api/issues/:id - Delete issue by id
+router.delete("/:id", async (req, res) => {
+  const db = getDB();
+  const { id } = req.params;
+
+  console.log("Delete request received for id:", id);
+
+  try {
+    const { ObjectId } = require('mongodb');
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid issue ID" });
+    }
+    const result = await db.collection("issues").deleteOne({ _id: new ObjectId(id) });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ msg: "Issue not found" });
+    }
+    res.status(200).json({ msg: "Issue deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting issue:", err);
+    res.status(500).json({ msg: "Error deleting issue", error: err.message });
+  }
+});
+
 module.exports = router;

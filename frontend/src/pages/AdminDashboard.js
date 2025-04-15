@@ -31,6 +31,8 @@ function AdminDashboard() {
     }
   };
 
+  // Removed deleteIssue function
+
   const updateStatus = async (id, status) => {
     try {
       const res = await fetch(`http://localhost:5000/api/issues/${id}`, {
@@ -79,10 +81,11 @@ function AdminDashboard() {
   }, [filters, issues]);
 
   return (
-    <div className="admin-dashboard">
-      <h1>Admin Dashboard - Reported Issues</h1>
+    <div className="admin-dashboard-page"> {/* Outer page wrapper */}
+      <div className="admin-dashboard-container"> {/* Inner content container */}
+        <h1>Admin Dashboard - Reported Issues</h1>
 
-      {loading && <p>Loading issues...</p>}
+        {loading && <p>Loading issues...</p>}
       {error && <p className="error">{error}</p>}
 
       <div className="filters">
@@ -121,6 +124,7 @@ function AdminDashboard() {
             <th>Submitted</th>
             <th>Status</th>
             <th>Update Status</th>
+            {/* Removed Actions header */}
           </tr>
         </thead>
         <tbody>
@@ -143,11 +147,13 @@ function AdminDashboard() {
                   <option value="Resolved">Resolved</option>
                 </select>
               </td>
+              {/* Removed Actions cell */}
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+      </div> {/* Close admin-dashboard-container */}
+    </div> /* Close admin-dashboard-page */
   );
 }
 
