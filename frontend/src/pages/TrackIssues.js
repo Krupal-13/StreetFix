@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { fetchIssues } from '../api';
 import './TrackIssues.css'; // Ensure this CSS file is updated
 
 function TrackIssues() {
@@ -7,25 +7,13 @@ function TrackIssues() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Mock data fetching - replace with actual API call
   useEffect(() => {
-    const fetchIssues = async () => {
+    const loadIssues = async () => {
       setLoading(true);
       setError(null);
       try {
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        // Replace with your actual API endpoint: e.g., axios.get('/api/issues')
-        // For now, using mock data
-        const mockData = [
-          { id: 1, title: 'Large pothole on Elm St', status: 'Resolved', submitted: '2024-04-01', category: 'Pothole' },
-          { id: 2, title: 'Streetlight out at Oak & Main', status: 'In Progress', submitted: '2024-04-03', category: 'Streetlight' },
-          { id: 3, title: 'Overflowing bin near park', status: 'Pending', submitted: '2024-04-05', category: 'Garbage' },
-          { id: 4, title: 'Graffiti on bridge wall', status: 'Pending', submitted: '2024-04-06', category: 'Graffiti' },
-        ];
-        setIssues(mockData);
-
+        const data = await fetchIssues();
+        setIssues(data);
       } catch (err) {
         console.error("Error fetching issues:", err);
         setError("Failed to load issues. Please try again later.");
@@ -34,8 +22,8 @@ function TrackIssues() {
       }
     };
 
-    fetchIssues();
-  }, []); // Empty dependency array means this runs once on mount
+    loadIssues();
+  }, []);
 
   const getStatusClass = (status) => {
     switch (status.toLowerCase()) {
@@ -71,14 +59,14 @@ function TrackIssues() {
             </thead>
             <tbody>
               {issues.map(issue => (
-                <tr key={issue.id} className="issue-row">
-                  <td>#{issue.id}</td>
+                <tr key={issue._id} className="issue-row">
+                  <td>#{issue._id}</td>
                   <td>{issue.title}</td>
                   <td>{issue.category}</td>
-                  <td>{new Date(issue.submitted).toLocaleDateString()}</td>
+                  <td>{issue.submitted ? new Date(issue.submitted).toLocaleDateString() : 'N/A'}</td>
                   <td>
-                    <span className={`status-badge ${getStatusClass(issue.status)}`}>
-                      {issue.status}
+                    <span className={`status-badge ${getStatusClass(issue.status || '')}`}>
+                      {issue.status || 'Pending'}
                     </span>
                   </td>
                 </tr>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { reportIssue } from '../api';
 import './ReportIssue.css'; // Ensure this CSS file is updated
 
 function ReportIssue() {
@@ -8,7 +8,6 @@ function ReportIssue() {
     description: '',
     category: 'pothole',
     location: '',
-    image: null,
   });
   const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
   const [errors, setErrors] = useState({});
@@ -27,29 +26,20 @@ function ReportIssue() {
     if (!validateForm()) return;
 
     setSubmitStatus('submitting'); // Indicate submission start
-    const formPayload = new FormData();
-    Object.keys(formData).forEach(key => {
-      formPayload.append(key, formData[key]);
-    });
 
     try {
-      // Replace with your actual API endpoint
-      const response = await axios.post('/api/report', formPayload, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      const response = await reportIssue(formData);
 
-      if (response.status === 201) {
+      if (response.msg === 'Issue reported successfully') {
         setSubmitStatus('success');
-        setFormData({ title: '', description: '', category: 'pothole', location: '', image: null });
+        setFormData({ title: '', description: '', category: 'pothole', location: '' });
         setErrors({});
-        // Optionally clear the file input visually if needed
       } else {
-        throw new Error('Submission failed with status: ' + response.status);
+        throw new Error('Submission failed: ' + (response.msg || 'Unknown error'));
       }
     } catch (error) {
       console.error('Submission error:', error);
       setSubmitStatus('error');
-      // Optionally set a general error message for the user
       setErrors(prev => ({ ...prev, general: 'Failed to submit report. Please try again.' }));
     }
   };
@@ -59,13 +49,6 @@ function ReportIssue() {
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: null })); // Clear error on change
-    }
-  };
-
-  const handleFileChange = (e) => {
-    setFormData(prev => ({ ...prev, image: e.target.files[0] }));
-    if (errors.image) {
-      setErrors(prev => ({ ...prev, image: null }));
     }
   };
 
@@ -144,20 +127,6 @@ function ReportIssue() {
             {errors.location && <span className="error-message">{errors.location}</span>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="image">Upload Photo (Optional)</label>
-            <input
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="file-input"
-            />
-            {/* Basic file name display */}
-            {formData.image && <span className="file-name-display">Selected: {formData.image.name}</span>}
-          </div>
-
           <button
             type="submit"
             className="submit-button"
@@ -172,3 +141,4 @@ function ReportIssue() {
 }
 
 export default ReportIssue;
+
