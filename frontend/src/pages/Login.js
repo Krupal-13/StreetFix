@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Assuming you might link to signup
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
 import './LoginSignup.css'; // Shared CSS for Login/Signup
 import { loginUser } from '../api';
+import { AuthContext } from '../context/AuthContext';
 
 function Login() {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate(); // Initialize navigate
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -33,9 +36,10 @@ function Login() {
       });
 
       if (response.msg === "Login successful") {
-        // For now, just show success message
+        login({ name: response.name, email: formData.email });
         alert(`Welcome, ${response.name}! You have logged in successfully.`);
         setFormData({ email: '', password: '' });
+        navigate('/'); // Redirect to home page after login
       } else {
         setError(response.msg || 'Login failed. Please check your credentials.');
       }

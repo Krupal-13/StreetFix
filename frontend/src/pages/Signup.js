@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'; // Link back to login
 import './LoginSignup.css'; // Shared CSS
 import { signupUser } from '../api'; 
+import { AuthContext } from '../context/AuthContext';
 
 function Signup() {
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,6 +48,7 @@ function Signup() {
       });
   
       if (response.msg === "User registered successfully") {
+        // Do not auto login user
         setSuccess('Account created successfully! Please log in.');
         setFormData({ name: '', email: '', password: '', confirmPassword: '' });
       } else {
