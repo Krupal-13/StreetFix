@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Assuming you might link to signup
 import './LoginSignup.css'; // Shared CSS for Login/Signup
+import { loginUser } from '../api';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ function Login() {
     setError(''); // Clear error on input change
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError(''); // Clear previous errors
 
@@ -25,20 +26,23 @@ function Login() {
       return;
     }
 
-    // --- TODO: Implement actual login logic here ---
-    // Example: Call an API endpoint
-    console.log('Attempting login with:', formData);
-    // Simulate API call
-    // Replace with actual API call using axios or fetch
-    // try {
-    //   const response = await axios.post('/api/login', formData);
-    //   // Handle successful login (e.g., store token, redirect)
-    //   console.log('Login successful:', response.data);
-    // } catch (err) {
-    //   console.error('Login error:', err);
-    //   setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
-    // }
-    setError('Login functionality not yet implemented.'); // Placeholder message
+    try {
+      const response = await loginUser({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (response.msg === "Login successful") {
+        // For now, just show success message
+        alert(`Welcome, ${response.name}! You have logged in successfully.`);
+        setFormData({ email: '', password: '' });
+      } else {
+        setError(response.msg || 'Login failed. Please check your credentials.');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Something went wrong. Please try again later.');
+    }
   };
 
   return (
