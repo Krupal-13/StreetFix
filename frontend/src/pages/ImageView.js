@@ -5,8 +5,6 @@ import './ImageView.css';
 function ImageView() {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Get image URL from query parameter ?img=
   const params = new URLSearchParams(location.search);
   const imageUrl = params.get('img');
 
@@ -26,5 +24,4 @@ function ImageView() {
     </div>
   );
 }
-
 export default ImageView;

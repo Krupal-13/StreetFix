@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom'; // Link back to login
-import './LoginSignup.css'; // Shared CSS
+import { Link } from 'react-router-dom'; 
+import './LoginSignup.css'; 
 import { signupUser } from '../api'; 
 import { AuthContext } from '../context/AuthContext';
 
@@ -18,7 +18,7 @@ function Signup() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    setError(''); // Clear error on input change
+    setError(''); 
     setSuccess('');
   };
   
@@ -48,7 +48,6 @@ function Signup() {
       });
   
       if (response.msg === "User registered successfully") {
-        // Do not auto login user
         setSuccess('Account created successfully! Please log in.');
         setFormData({ name: '', email: '', password: '', confirmPassword: '' });
       } else {

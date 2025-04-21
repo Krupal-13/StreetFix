@@ -7,12 +7,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# MongoDB Connection String
+
 app.config["MONGO_URI"] = "mongodb+srv://Krish:SMC4yGA1VzmtvZpd@cluster0.dsmrx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 mongo = PyMongo(app)
-users = mongo.db.users  # Collection name
+users = mongo.db.users  
 
-# Signup Route
 @app.route('/signup', methods=['POST'])
 def signup():
     data = request.json
@@ -28,7 +27,6 @@ def signup():
     
     return jsonify({"message": "User registered successfully!"}), 201
 
-# Login Route
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json

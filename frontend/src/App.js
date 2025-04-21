@@ -5,14 +5,13 @@ import Home from "./pages/Home";
 import ReportIssue from "./pages/ReportIssue";
 import TrackIssues from "./pages/TrackIssues";
 import About from "./pages/About";
-import Login from "./pages/Login"; // Add Login import
-import Signup from "./pages/Signup"; // Add Signup import
+import Login from "./pages/Login"; 
+import Signup from "./pages/Signup"; 
 import { AuthProvider } from "./context/AuthContext";
 import AdminDashboard from "./pages/AdminDashboard";
 import MyReports from "./pages/MyReports";
 import NotFound from "./pages/NotFound";
-// Remove bootstrap import if no longer needed anywhere
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -24,11 +23,11 @@ function App() {
           <Route path="/report" element={<ReportIssue />} />
           <Route path="/track" element={<TrackIssues />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} /> {/* Add Login route */}
-          <Route path="/signup" element={<Signup />} /> {/* Add Signup route */}
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/signup" element={<Signup />} /> 
           <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/myreports" element={<MyReports />} /> {/* Add MyReports route */}
-          <Route path="*" element={<NotFound />} /> {/* Catch-all route for 404 */}
+          <Route path="/myreports" element={<MyReports />} /> 
+          <Route path="*" element={<NotFound />} /> 
         </Routes>
       </Router>
     </AuthProvider>

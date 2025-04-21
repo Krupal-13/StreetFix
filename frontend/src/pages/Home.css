@@ -1,8 +1,7 @@
-/* General Page Styles */
 .home-page {
-  font-family: 'Inter', sans-serif; /* Modern sans-serif font */
+  font-family: 'Inter', sans-serif;
   color: #333;
-  padding-top: 80px; /* Account for fixed navbar */
+  padding-top: 80px;
 }
 
 .section-title {
@@ -12,14 +11,12 @@
   margin-bottom: 1rem;
   color: #222;
 }
-
-/* Hero Section */
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Light gradient */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   min-height: 90vh;
   margin-bottom: 4rem;
 }
@@ -45,7 +42,7 @@
 
 .hero-cta-button {
   display: inline-block;
-  background-color: #007bff; /* Primary blue */
+  background-color: #007bff;
   color: white;
   padding: 1rem 2rem;
   font-size: 1.1rem;
@@ -57,7 +54,7 @@
 }
 
 .hero-cta-button:hover {
-  background-color: #0056b3; /* Darker blue */
+  background-color: #0056b3;
   transform: translateY(-2px);
 }
 
@@ -71,13 +68,11 @@
 .visual-placeholder {
   width: 350px;
   height: 350px;
-  background-color: #dee2e6; /* Placeholder color */
+  background-color: #dee2e6;
   border-radius: 50%;
-  /* Add a subtle animation or graphic later */
   background: radial-gradient(circle, rgba(0,123,255,0.1) 0%, rgba(255,255,255,0) 70%);
 }
 
-/* Features Section */
 .features-section {
   padding: 4rem 2rem;
   text-align: center;
@@ -107,7 +102,7 @@
 }
 
 .feature-icon {
-  font-size: 2.5rem; /* Emoji icons */
+  font-size: 2.5rem;
   display: block;
   margin-bottom: 1rem;
 }
@@ -123,10 +118,9 @@
   font-size: 1rem;
 }
 
-/* How It Works Section */
 .how-it-works-section {
   padding: 4rem 2rem;
-  background-color: #f8f9fa; /* Light background */
+  background-color: #f8f9fa;
 }
 
 .steps-container {
@@ -158,7 +152,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 auto 1rem;
-  border: 4px solid #f8f9fa; /* Match background */
+  border: 4px solid #f8f9fa; 
 }
 
 .step-card h4 {
@@ -175,19 +169,17 @@
 .step-connector {
   flex-grow: 1;
   height: 4px;
-  background-color: #dee2e6; /* Light grey connector */
+  background-color: #dee2e6;
   position: relative;
-  top: 25px; /* Align with center of step number */
-  margin: 0 -1rem; /* Overlap slightly */
+  top: 25px;
+  margin: 0 -1rem;
   z-index: 0;
 }
 
-/* Style step numbers differently */
 .step-card:nth-child(3) .step-number { background-color: #28a745; } /* Green */
 .step-card:nth-child(5) .step-number { background-color: #ffc107; color: #333; } /* Yellow */
 .step-card:nth-child(7) .step-number { background-color: #dc3545; } /* Red */
 
-/* Call to Action Section */
 .cta-section {
   padding: 5rem 2rem;
   text-align: center;
@@ -221,12 +213,10 @@
 }
 
 .cta-button-secondary:hover {
-  background-color: #f8f9fa; /* Lighter background */
+  background-color: #f8f9fa;
   color: #0056b3;
   transform: translateY(-2px);
 }
-
-/* Responsive Adjustments */
 @media screen and (max-width: 992px) {
   .hero-section {
     flex-direction: column;
@@ -251,7 +241,7 @@
     width: 80%;
   }
   .step-connector {
-    display: none; /* Hide connectors on vertical layout */
+    display: none; 
   }
 }
 
@@ -270,14 +260,12 @@
     font-size: 2rem;
   }
   .features-grid {
-    grid-template-columns: 1fr; /* Stack features */
+    grid-template-columns: 1fr;
   }
   .cta-section h2 {
     font-size: 2.2rem;
   }
 }
-
-/* Add Inter font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 body {

@@ -1,10 +1,10 @@
 import React from 'react';
-import './About.css'; // Ensure this CSS file is updated
+import './About.css'; 
 
 function About() {
   return (
     <div className="about-page">
-      {/* Page Header */}
+      
       <section className="page-header">
         <div className="header-content">
           <h1>About StreetFix</h1>
@@ -12,7 +12,7 @@ function About() {
         </div>
       </section>
 
-      {/* Mission Section */}
+      
       <section className="mission-section content-section">
         <h2>Our Mission</h2>
         <p>
@@ -24,7 +24,7 @@ function About() {
         </p>
       </section>
 
-      {/* How We Help Section */}
+      
       <section className="how-we-help-section content-section bg-light">
         <h2>How We Help</h2>
         <div className="help-grid">
@@ -46,7 +46,7 @@ function About() {
         </div>
       </section>
 
-      {/* Future Goals Section */}
+      
       <section className="future-goals-section content-section">
         <h2>Looking Ahead</h2>
         <p>
@@ -55,7 +55,7 @@ function About() {
           for city planning, expanding mobile app features, and partnering with more
           municipalities worldwide to build smarter, more responsive cities together.
         </p>
-        {/* Placeholder for roadmap graphic */}
+        
         <div className="roadmap-placeholder">Future Roadmap Visualization</div>
       </section>
     </div>

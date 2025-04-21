@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { reportIssue } from '../api';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import './ReportIssue.css'; // Ensure this CSS file is updated
+import './ReportIssue.css';
 
 function ReportIssue() {
   const { user } = useContext(AuthContext);
@@ -21,7 +21,7 @@ function ReportIssue() {
     location: '',
   });
   const [imageFile, setImageFile] = useState(null);
-  const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -37,7 +37,7 @@ function ReportIssue() {
     event.preventDefault();
     if (!validateForm()) return;
 
-    setSubmitStatus('submitting'); // Indicate submission start
+    setSubmitStatus('submitting');
 
     try {
       const formPayload = new FormData();
@@ -75,7 +75,7 @@ function ReportIssue() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: null })); // Clear error on change
+      setErrors(prev => ({ ...prev, [name]: null })); 
     }
   };
 

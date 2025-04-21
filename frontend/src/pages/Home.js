@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css'; // Ensure this CSS file is updated
+import './Home.css';
 
-import heroBg from './images/A_flat-style_digital_illustration_in_the_backgroun.png'; // Import the image
+import heroBg from './images/A_flat-style_digital_illustration_in_the_backgroun.png';
 
 function Home() {
   return (

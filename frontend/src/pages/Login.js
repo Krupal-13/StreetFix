@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
-import './LoginSignup.css'; // Shared CSS for Login/Signup
+import { Link, useNavigate } from 'react-router-dom';
+import './LoginSignup.css';
 import { loginUser } from '../api';
 import { AuthContext } from '../context/AuthContext';
 
 function Login() {
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -16,14 +16,12 @@ function Login() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    setError(''); // Clear error on input change
+    setError('');
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError(''); // Clear previous errors
-
-    // Basic validation
+    setError('');
     if (!formData.email || !formData.password) {
       setError('Please enter both email and password.');
       return;
@@ -39,7 +37,7 @@ function Login() {
         login({ name: response.name, email: formData.email });
         alert(`Welcome, ${response.name}! You have logged in successfully.`);
         setFormData({ email: '', password: '' });
-        navigate('/'); // Redirect to home page after login
+        navigate('/');
       } else {
         setError(response.msg || 'Login failed. Please check your credentials.');
       }

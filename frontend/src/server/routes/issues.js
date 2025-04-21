@@ -5,8 +5,6 @@ const path = require("path");
 const fs = require("fs");
 
 const router = express.Router();
-
-// Setup multer storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const uploadDir = path.join(__dirname, '..', 'uploads');
@@ -23,18 +21,13 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
-// POST /api/issues - Add a new issue with optional image upload
 router.post("/", upload.single('image'), async (req, res) => {
   const db = getDB();
   const issueData = req.body;
 
   if (req.file) {
-    // Save image path relative to server root
     issueData.imageUrl = `/uploads/${req.file.filename}`;
   }
-
-  // Add user info from request (assumes user info is sent in req.body.userId or req.body.userEmail)
   if (req.body.userId) {
     issueData.userId = req.body.userId;
   }
@@ -50,8 +43,6 @@ router.post("/", upload.single('image'), async (req, res) => {
     res.status(500).json({ msg: "Error reporting issue", error: err.message });
   }
 });
-
-// GET /api/issues - Get all issues
 router.get("/", async (req, res) => {
   const db = getDB();
 
@@ -63,8 +54,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ msg: "Error fetching issues", error: err.message });
   }
 });
-
-// GET /api/issues/user/:userId - Get issues for a specific user
 router.get("/user/:userId", async (req, res) => {
   const db = getDB();
   const { userId } = req.params;
@@ -77,8 +66,6 @@ router.get("/user/:userId", async (req, res) => {
     res.status(500).json({ msg: "Error fetching user issues", error: err.message });
   }
 });
-
-// PUT /api/issues/:id - Update issue by id (e.g., status)
 router.put("/:id", async (req, res) => {
   const db = getDB();
   const { id } = req.params;
@@ -104,8 +91,6 @@ router.put("/:id", async (req, res) => {
     res.status(500).json({ msg: "Error updating issue", error: err.message, stack: err.stack });
   }
 });
-
-// DELETE /api/issues/:id - Delete issue by id
 router.delete("/:id", async (req, res) => {
   const db = getDB();
   const { id } = req.params;

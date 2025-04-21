@@ -31,7 +31,6 @@ function AdminDashboard() {
     }
   };
 
-  // Removed deleteIssue function
 
   const updateStatus = async (id, status) => {
     try {
@@ -81,8 +80,8 @@ function AdminDashboard() {
   }, [filters, issues]);
 
   return (
-    <div className="admin-dashboard-page"> {/* Outer page wrapper */}
-      <div className="admin-dashboard-container"> {/* Inner content container */}
+    <div className="admin-dashboard-page"> 
+      <div className="admin-dashboard-container"> 
         <h1>Admin Dashboard - Reported Issues</h1>
 
         {loading && <p>Loading issues...</p>}
@@ -124,7 +123,7 @@ function AdminDashboard() {
             <th>Submitted</th>
             <th>Status</th>
             <th>Update Status</th>
-            {/* Removed Actions header */}
+            
           </tr>
         </thead>
         <tbody>
@@ -147,13 +146,13 @@ function AdminDashboard() {
                   <option value="Resolved">Resolved</option>
                 </select>
               </td>
-              {/* Removed Actions cell */}
+              
             </tr>
           ))}
         </tbody>
       </table>
-      </div> {/* Close admin-dashboard-container */}
-    </div> /* Close admin-dashboard-page */
+      </div> 
+    </div> 
   );
 }
 

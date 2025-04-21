@@ -1,33 +1,33 @@
-/* General Page Styles */
+
 .admin-dashboard-page {
   font-family: 'Inter', sans-serif;
   color: #333;
-  padding-top: 80px; /* Account for fixed navbar */
-  padding-bottom: 4rem; /* Add some bottom padding */
-  background-color: #f8f9fa; /* Match light background from Home/TrackIssues */
-  min-height: calc(100vh - 80px); /* Adjust min-height for padding */
+  padding-top: 80px; 
+  padding-bottom: 4rem; 
+  background-color: #f8f9fa; 
+  min-height: calc(100vh - 80px); 
 }
 
 .admin-dashboard-container {
-  max-width: 1200px; /* Limit content width */
-  margin: 0 auto; /* Center content */
-  padding: 2rem; /* Inner padding for the content area */
-  background-color: #fff; /* White background for content */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); /* Subtle shadow like feature cards */
-  margin-top: 2rem; /* Space below navbar */
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 2rem; 
+  background-color: #fff; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); 
+  margin-top: 2rem; 
 }
 
-/* Page Title - Match TrackIssues */
+
 .admin-dashboard-container h1 {
   text-align: center;
-  font-size: 2.5rem; /* Match page-title */
-  font-weight: 700; /* Match page-title */
-  margin-bottom: 2rem; /* Increased margin */
-  color: #222; /* Match page-title */
+  font-size: 2.5rem; 
+  font-weight: 700; 
+  margin-bottom: 2rem; 
+  color: #222; 
 }
 
-/* Filters - Keep specific styles */
+
 .filters {
   display: flex;
   gap: 1rem;
@@ -42,16 +42,16 @@
   font-size: 0.9rem;
 }
 
-/* Enhanced Filters */
+
 .filters {
   display: flex;
-  gap: 1.5rem; /* Increased gap */
-  margin-bottom: 2rem; /* Increased bottom margin */
+  gap: 1.5rem; 
+  margin-bottom: 2rem; 
   flex-wrap: wrap;
-  padding: 1.5rem; /* Add padding */
-  background-color: #f8f9fa; /* Light background for filter area */
-  border-radius: 8px; /* Rounded corners */
-  border: 1px solid #dee2e6; /* Subtle border */
+  padding: 1.5rem; 
+  background-color: #f8f9fa; 
+  border-radius: 8px; 
+  border: 1px solid #dee2e6; 
 }
 
 .filters label {
@@ -59,63 +59,63 @@
   flex-direction: column;
   font-weight: 600;
   font-size: 0.9rem;
-  color: #495057; /* Slightly darker label text */
+  color: #495057; 
 }
 
 .filters input,
 .filters select {
-  padding: 0.6rem 0.8rem; /* Increased padding */
-  border: 1px solid #ced4da; /* Standard Bootstrap border color */
-  border-radius: 6px; /* Slightly more rounded */
+  padding: 0.6rem 0.8rem; 
+  border: 1px solid #ced4da; 
+  border-radius: 6px; 
   font-size: 1rem;
-  margin-top: 0.3rem; /* Adjusted margin */
+  margin-top: 0.3rem; 
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .filters input:focus,
 .filters select:focus {
-  border-color: #80bdff; /* Blue border on focus */
+  border-color: #80bdff; 
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue glow on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); 
 }
 
-/* Table Styles - Match TrackIssues */
+
 .issues-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.5rem; /* Add space above table */
-  /* Remove background and shadow from here, container has it */
+  margin-top: 1.5rem; 
+  
 }
 
 .issues-table th,
 .issues-table td {
-  padding: 1rem 1rem; /* Slightly increase padding */
-  border-bottom: 1px solid #dee2e6; /* Lighter border, only bottom */
+  padding: 1rem 1rem; 
+  border-bottom: 1px solid #dee2e6; 
   text-align: left;
   vertical-align: middle;
 }
 
 .issues-table th {
-  background-color: #007bff; /* Use primary blue for header */
-  color: white; /* White text on blue */
+  background-color: #007bff; 
+  color: white; 
   font-weight: 600;
   text-align: left;
-  border-bottom: 2px solid #0056b3; /* Darker blue bottom border */
+  border-bottom: 2px solid #0056b3; 
 }
 
-/* Add hover effect to rows */
+
 .issues-table tbody tr:hover {
   background-color: #f1f3f5;
 }
 
-/* Keep specific styles for status dropdown in table */
-/* Enhanced Status Update Dropdown */
+
+
 .issues-table select {
-  padding: 0.4rem 0.6rem; /* Match filter padding */
-  border: 1px solid #ced4da; /* Match filter border */
-  border-radius: 6px; /* Match filter radius */
+  padding: 0.4rem 0.6rem; 
+  border: 1px solid #ced4da; 
+  border-radius: 6px; 
   font-size: 0.9rem;
-  background-color: #e9ecef; /* Light grey background */
+  background-color: #e9ecef; 
   cursor: pointer;
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -126,12 +126,12 @@
 }
 
 .issues-table select:focus {
-  border-color: #80bdff; /* Blue border on focus */
+  border-color: #80bdff; 
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue glow on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); 
 }
 
-/* Error Message */
+
 .error {
   color: red;
   font-weight: 600;

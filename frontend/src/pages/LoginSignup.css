@@ -1,23 +1,23 @@
-/* General Auth Page Styles */
+
 .auth-page {
   font-family: 'Inter', sans-serif;
   color: #333;
-  padding: 100px 2rem 4rem; /* Adjust top padding for fixed navbar */
-  background-color: #f4f7f6; /* Consistent light background */
+  padding: 100px 2rem 4rem;
+  background-color: #f4f7f6;
   min-height: 100vh;
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  align-items: center;
+  justify-content: center;
 }
 
 .auth-container {
-  max-width: 450px; /* Optimal width for auth forms */
+  max-width: 450px;
   width: 100%;
   background-color: #fff;
   padding: 2.5rem 3rem;
   border-radius: 12px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-  text-align: center; /* Center titles and links */
+  text-align: center; 
 }
 
 .auth-title {
@@ -33,10 +33,9 @@
   margin-bottom: 2rem;
 }
 
-/* Form Group Styling */
 .auth-form-group {
   margin-bottom: 1.5rem;
-  text-align: left; /* Align labels and inputs left */
+  text-align: left;
 }
 
 .auth-form-group label {
@@ -66,7 +65,6 @@
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
 }
 
-/* Error and Success Messages */
 .auth-error-message,
 .auth-success-message {
   padding: 0.8rem 1rem;
@@ -88,7 +86,6 @@
   border: 1px solid #badbcc;
 }
 
-/* Submit Button */
 .auth-submit-button {
   display: block;
   width: 100%;
@@ -114,7 +111,6 @@
   cursor: not-allowed;
 }
 
-/* Switch Link (Login <-> Signup) */
 .auth-switch-link {
   margin-top: 1.8rem;
   font-size: 0.95rem;
@@ -133,10 +129,9 @@
   text-decoration: underline;
 }
 
-/* Responsive Adjustments */
 @media screen and (max-width: 576px) {
   .auth-page {
-    padding: 60px 1rem 2rem; /* Adjust padding for smaller screens */
+    padding: 60px 1rem 2rem;
   }
   .auth-container {
     padding: 2rem 1.5rem;
@@ -146,7 +141,6 @@
   }
 }
 
-/* Ensure Inter font is loaded */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {

@@ -1,13 +1,10 @@
-/* General Page Styles */
 .about-page {
   font-family: 'Inter', sans-serif;
   color: #333;
-  padding-top: 80px; /* Account for fixed navbar */
+  padding-top: 80px; 
 }
-
-/* Page Header */
 .page-header {
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* Blue gradient */
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); 
   color: white;
   padding: 4rem 2rem;
   text-align: center;
@@ -27,11 +24,11 @@
   margin: 0 auto;
 }
 
-/* Content Sections */
+
 .content-section {
   padding: 3rem 2rem;
   max-width: 900px;
-  margin: 0 auto 3rem; /* Center content and add bottom margin */
+  margin: 0 auto 3rem; 
 }
 
 .content-section h2 {
@@ -44,7 +41,7 @@
   padding-bottom: 0.5rem;
 }
 
-/* Underline effect for section titles */
+
 .content-section h2::after {
   content: '';
   position: absolute;
@@ -61,15 +58,15 @@
   font-size: 1.1rem;
   line-height: 1.7;
   color: #555;
-  text-align: justify; /* Justify text for readability */
+  text-align: justify; 
 }
 
 .bg-light {
-  background-color: #f8f9fa; /* Light background for contrast */
-  border-radius: 12px; /* Rounded corners for light sections */
+  background-color: #f8f9fa; 
+  border-radius: 12px; 
 }
 
-/* How We Help Section Grid */
+
 .help-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -83,7 +80,7 @@
 }
 
 .help-icon {
-  font-size: 2.8rem; /* Emoji icons */
+  font-size: 2.8rem; 
   display: block;
   margin-bottom: 1rem;
 }
@@ -97,10 +94,10 @@
 .help-item p {
   font-size: 1rem;
   color: #666;
-  text-align: center; /* Center text within the item */
+  text-align: center; 
 }
 
-/* Future Goals Section */
+
 .roadmap-placeholder {
   margin-top: 2rem;
   padding: 3rem;
@@ -111,7 +108,7 @@
   color: #6c757d;
 }
 
-/* Responsive Adjustments */
+
 @media screen and (max-width: 768px) {
   .content-section {
     padding: 2.5rem 1rem;
@@ -126,11 +123,11 @@
     font-size: 1rem;
   }
   .help-grid {
-    grid-template-columns: 1fr; /* Stack items */
+    grid-template-columns: 1fr; 
   }
 }
 
-/* Ensure Inter font is loaded */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {

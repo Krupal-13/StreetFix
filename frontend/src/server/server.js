@@ -15,8 +15,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/issues", issuesRoutes);
-
-// Serve uploaded images statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 connectDB().then(() => {

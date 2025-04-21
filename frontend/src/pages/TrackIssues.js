@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react'; // Import useMemo
+import React, { useState, useEffect, useMemo } from 'react';
 import { fetchIssues } from '../api';
-import './TrackIssues.css'; // Ensure this CSS file is updated
+import './TrackIssues.css';
 
 function TrackIssues() {
   const [issues, setIssues] = useState([]);
@@ -27,10 +27,7 @@ function TrackIssues() {
 
     loadIssues();
   }, []);
-
-  // Separate issues into ongoing and resolved using useMemo
   const ongoingIssues = useMemo(() => {
-    // Consider 'Pending' or empty status as ongoing
     return issues.filter(issue => !issue.status || issue.status.toLowerCase() !== 'resolved');
   }, [issues]);
 

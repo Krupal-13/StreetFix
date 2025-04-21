@@ -1,14 +1,14 @@
 .navbar {
-  background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
-  backdrop-filter: blur(8px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  background: rgba(255, 255, 255, 0.9); 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); 
   padding: 1rem 0;
-  position: fixed; /* Stick to top */
+  position: fixed; 
   width: 100%;
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); 
   transition: background 0.3s ease;
 }
 
@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem; /* Add padding for spacing */
+  padding: 0 2rem; 
 }
 
 .navbar-logo {
@@ -52,44 +52,44 @@
 }
 
 .nav-link:hover,
-.nav-link.active { /* Add an active class later if needed */
-  color: #007bff; /* Primary color */
-  color: #007bff; /* Primary color */
-  background-color: rgba(0, 123, 255, 0.08); /* Light primary background */
+.nav-link.active { 
+  color: #007bff; 
+  color: #007bff; 
+  background-color: rgba(0, 123, 255, 0.08); 
 }
 
-/* Auth Link Styling */
+
 .nav-item-auth {
-  margin-left: 0.8rem; /* Slightly less margin for auth buttons */
+  margin-left: 0.8rem; 
 }
 
 .nav-link-login {
-  /* Keep standard link style */
+  
 }
 
 .nav-link-signup {
   background-color: #007bff;
   color: white;
-  padding: 0.5rem 1rem; /* Adjust padding for button look */
+  padding: 0.5rem 1rem; 
   border-radius: 6px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-link-signup:hover {
   background-color: #0056b3;
-  color: white; /* Ensure text remains white on hover */
+  color: white; 
   transform: translateY(-1px);
 }
 
-/* Basic responsiveness for smaller screens */
+
 @media screen and (max-width: 768px) {
   .navbar-container {
     padding: 0 1rem;
   }
   .nav-menu {
-    /* Basic mobile menu handling - more complex logic might be needed */
-    display: none; /* Hide menu by default on small screens */
-    /* Add logic to toggle visibility */
+    
+    display: none; 
+    
   }
-  /* Add a burger menu icon/button here */
+  
 }

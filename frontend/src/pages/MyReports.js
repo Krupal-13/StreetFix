@@ -47,8 +47,6 @@ function MyReports() {
   };
 
   const handleEdit = (id) => {
-    // For simplicity, redirect to ReportIssue page with id param for editing
-    // You can implement a dedicated edit page if needed
     window.location.href = `/report?id=${id}`;
   };
 

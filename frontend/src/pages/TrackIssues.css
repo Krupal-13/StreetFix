@@ -1,43 +1,41 @@
-/* General Page Styles */
 .track-issues-page {
   font-family: 'Inter', sans-serif;
   color: #333;
-  padding-top: 80px; /* Account for fixed navbar */
-  padding-bottom: 4rem; /* Add some bottom padding */
-  background-color: #f8f9fa; /* Match light background from Home */
-  min-height: calc(100vh - 80px); /* Adjust min-height for padding */
+  padding-top: 80px;
+  padding-bottom: 4rem;
+  background-color: #f8f9fa; 
+  min-height: calc(100vh - 80px); 
 }
 
 .track-issues-container {
-  max-width: 1200px; /* Limit content width */
-  margin: 0 auto; /* Center content */
-  padding: 2rem; /* Inner padding for the content area */
-  background-color: #fff; /* White background for content */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); /* Subtle shadow like feature cards */
-  margin-top: 2rem; /* Space below navbar */
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); 
+  margin-top: 2rem; 
 }
 
 .page-title {
   text-align: center;
-  font-size: 2.5rem; /* Match section-title */
-  font-weight: 700; /* Match section-title */
-  margin-bottom: 2rem; /* Increased margin */
-  color: #222; /* Match section-title */
+  font-size: 2.5rem; 
+  font-weight: 700; 
+  margin-bottom: 2rem;
+  color: #222;
 }
 
-/* Section Styling */
 .issues-section {
-  margin-top: 3rem; /* Add space between sections */
+  margin-top: 3rem; 
 }
 
 .section-title {
-  font-size: 1.8rem; /* Slightly smaller than page title */
+  font-size: 1.8rem;
   font-weight: 600;
-  color: #0056b3; /* Use a darker blue for section titles */
+  color: #0056b3;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #dee2e6; /* Separator line */
+  border-bottom: 2px solid #dee2e6;
 }
 
 .loading-indicator,
@@ -55,32 +53,31 @@
 .issues-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.5rem; /* Add space above table */
+  margin-top: 1.5rem; 
 }
 
 .issues-table th,
 .issues-table td {
-  padding: 1rem 1rem; /* Slightly increase padding */
-  border-bottom: 1px solid #dee2e6; /* Lighter border, only bottom */
+  padding: 1rem 1rem; 
+  border-bottom: 1px solid #dee2e6;
   text-align: left;
   vertical-align: middle;
 }
 
 .issues-table th {
-  background-color: #007bff; /* Use primary blue for header */
-  color: white; /* White text on blue */
+  background-color: #007bff; 
+  color: white; 
   font-weight: 600;
   text-align: left;
-  border-bottom: 2px solid #0056b3; /* Darker blue bottom border */
+  border-bottom: 2px solid #0056b3; 
 }
 
-/* Add hover effect to rows */
 .issues-table tbody tr:hover {
   background-color: #f1f3f5;
 }
 
 .issue-thumbnail {
-  border-radius: 6px; /* Slightly larger radius */
+  border-radius: 6px; 
   transition: transform 0.2s ease;
 }
 
@@ -88,33 +85,31 @@
   transform: scale(1.1);
 }
 
-/* Enhanced Status Badges */
 .status-badge {
-  padding: 0.3rem 0.7rem; /* Slightly larger padding */
-  border-radius: 15px; /* More rounded */
-  font-size: 0.8rem; /* Slightly smaller font */
-  font-weight: 700; /* Bolder */
-  text-transform: uppercase; /* Uppercase text */
+  padding: 0.3rem 0.7rem;
+  border-radius: 15px; 
+  font-size: 0.8rem; 
+  font-weight: 700;
+  text-transform: uppercase; 
   letter-spacing: 0.5px;
   display: inline-block;
-  border: none; /* Remove border */
+  border: none; 
   text-align: center;
-  min-width: 90px; /* Minimum width for consistency */
+  min-width: 90px; 
 }
 
-/* Resolved section/row styling */
 .resolved-section .section-title {
-  color: #28a745; /* Green title for resolved section */
+  color: #28a745; 
 }
 
 .resolved-row {
-  opacity: 0.75; /* Slightly fade out resolved rows */
-  background-color: #f8f9fa; /* Light grey background for resolved rows */
+  opacity: 0.75; 
+  background-color: #f8f9fa; 
 }
 
 .resolved-row:hover {
-  opacity: 1; /* Full opacity on hover */
-  background-color: #e9ecef; /* Slightly darker grey on hover */
+  opacity: 1; 
+  background-color: #e9ecef; 
 }
 
 .status-resolved {
@@ -122,12 +117,12 @@
 }
 
 .status-in-progress {
-  background-color: #ffc107; /* Brighter yellow */
-  color: #333; /* Darker text for yellow */
+  background-color: #ffc107; 
+  color: #333; 
 }
 
 .status-pending {
-  background-color: #6c757d; /* Standard grey */
+  background-color: #6c757d;
   color: white;
 }
 
